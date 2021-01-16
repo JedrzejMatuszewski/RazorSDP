@@ -13,7 +13,7 @@ namespace RazorPagesLesson.Pages
         public IActionResult OnGet()
         {
             InfoMesssage += $" Aktualny czas to: {DateTime.Now}";
-            return RedirectToPage("Students/Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
