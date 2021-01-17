@@ -57,3 +57,12 @@
 }
     </tbody>
 </table>
+
+<br>
+
+<form asp-controller="Students" asp-action="UploadFile" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="file" />
+    <button type="submit">Wyślij</button>
+</form>

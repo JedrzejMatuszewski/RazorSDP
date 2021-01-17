@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RazorPagesLesson.Models;
 
 namespace RazorPagesLesson.Controllers
@@ -166,5 +169,40 @@ namespace RazorPagesLesson.Controllers
         {
             return _context.Student.Any(e => e.Id == id);
         }
+
+
+        // Upload File - Homework
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+
+            var path = Path.Combine(
+                        Directory.GetCurrentDirectory(), "wwwroot",
+                        file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var jsonString = await System.IO.File.ReadAllTextAsync(path);
+
+            var imprtedData = JsonConvert.DeserializeObject<List<Student>>(jsonString);
+
+            foreach (var item in imprtedData)
+            {
+                _context.Add(item);
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
     }
+
 }

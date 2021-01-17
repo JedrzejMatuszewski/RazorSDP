@@ -1,0 +1,37 @@
+[
+  {
+    "FirstName": "Jakub",
+    "LastName": "Json",
+    "Email": "jakub.json@wp.pl",
+    "Age": "22",
+    "Gender": 0
+  },
+  {
+    "FirstName": "Agata",
+    "LastName": "Kowalska",
+    "Email": "a.kowal@gmailcom",
+    "Age": "21",
+    "Gender": 1
+  },
+  {
+    "FirstName": "Ola",
+    "LastName": "Novak",
+    "Email": "ola@novak.com",
+    "Age": "29",
+    "Gender": 1
+  },
+  {
+    "FirstName": "Krystian",
+    "LastName": "Karczyński",
+    "Email": "krystian@etrapez.pl",
+    "Age": "24",
+    "Gender": 0
+  },
+  {
+    "FirstName": "Michał",
+    "LastName": "Budzyński",
+    "Email": "michal@matemaks.pl",
+    "Age": "23",
+    "Gender": 0
+  }
+]
